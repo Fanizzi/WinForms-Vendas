@@ -16,5 +16,10 @@ namespace _211089
         {
             InitializeComponent();
         }
+
+        private void FrmMenu_Load(object sender, EventArgs e)
+        {
+            Banco.CriarBanco();
+        }
     }
 }

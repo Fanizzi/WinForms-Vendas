@@ -60,6 +60,13 @@ namespace _211089
                 // Executa a Query no MySQL (Raio do Workbench)
                 Comando.ExecuteNonQuery();
 
+                Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Cidades " +
+                                           "(id integer auto_increment primary key, " +
+                                           "nome varchar(40), " +
+                                           "uf char(02))", Conexao);
+
+                Comando.ExecuteNonQuery();
+
                 // Chama a função para fechar a conexão com o banco
                 FecharConexao();
             }
