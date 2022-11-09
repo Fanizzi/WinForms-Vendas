@@ -22,8 +22,20 @@ namespace _211089
         {
             Banco.CriarBanco();
         }
+        
+        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmMarca form = new FrmMarca();
+            form.Show();
+        }
 
-        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCategoria form = new FrmCategoria();
+            form.Show();
+        }
+
+        private void cidadesToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             FrmCidades form = new FrmCidades();
             form.Show();

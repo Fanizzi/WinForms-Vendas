@@ -67,6 +67,18 @@ namespace _211089
 
                 Comando.ExecuteNonQuery();
 
+                Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Marcas " +
+                                           "(id integer auto_increment primary key, " +
+                                           "nome varchar(20))", Conexao);
+
+                Comando.ExecuteNonQuery();
+
+                Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Categorias " +
+                                           "(id integer auto_increment primary key, " +
+                                           "nome varchar(20))", Conexao);
+
+                Comando.ExecuteNonQuery();
+
                 // Chama a função para fechar a conexão com o banco
                 FecharConexao();
             }
