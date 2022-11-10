@@ -34,53 +34,9 @@ namespace _211089.Views
             dgvMarcas.DataSource = m.Consultar();
         }
 
-        private void FrmMarca_Load(object sender, EventArgs e)
+        private void btnFechar_Click(object sender, EventArgs e)
         {
-            limparControles();
-            carregarGrid("");
-        }
-        private void btnIncluir_Click(object sender, EventArgs e)
-        {
-            if (txtNome.Text == String.Empty) return;
-
-            m = new Marca()
-            {
-                nome = txtNome.Text,
-            };
-            m.Incluir();
-
-            limparControles();
-            carregarGrid("");
-        }
-
-        private void DgvCidades_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvMarcas.RowCount > 0)
-            {
-                txtId.Text = dgvMarcas.CurrentRow.Cells["id"].Value.ToString();
-                txtNome.Text = dgvMarcas.CurrentRow.Cells["nome"].Value.ToString();
-            }
-        }
-
-        private void btnAlterar_Click(object sender, EventArgs e)
-        {
-            if (txtId.Text == String.Empty) return;
-
-            m = new Marca()
-            {
-                id = int.Parse(txtId.Text),
-                nome = txtNome.Text,
-            };
-            m.Alterar();
-
-            limparControles();
-            carregarGrid("");
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            limparControles();
-            carregarGrid("");
+            Close();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -99,17 +55,61 @@ namespace _211089.Views
                 limparControles();
                 carregarGrid("");
             }
-
         }
 
-        private void btnFechar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Close();
+            limparControles();
+            carregarGrid("");
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if (txtId.Text == String.Empty) return;
+
+            m = new Marca()
+            {
+                id = int.Parse(txtId.Text),
+                nome = txtNome.Text,
+            };
+            m.Alterar();
+
+            limparControles();
+            carregarGrid("");
+        }
+
+        private void btnIncluir_Click(object sender, EventArgs e)
+        {
+            if (txtNome.Text == String.Empty) return;
+
+            m = new Marca()
+            {
+                nome = txtNome.Text,
+            };
+            m.Incluir();
+
+            limparControles();
+            carregarGrid("");
         }
 
         private void btnPesquisa_Click(object sender, EventArgs e)
         {
             carregarGrid(txtPesquisa.Text);
+        }
+
+        private void DgvMarcas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvMarcas.RowCount > 0)
+            {
+                txtId.Text = dgvMarcas.CurrentRow.Cells["id"].Value.ToString();
+                txtNome.Text = dgvMarcas.CurrentRow.Cells["nome"].Value.ToString();
+            }
+        }
+
+        private void FrmMarca_Load(object sender, EventArgs e)
+        {
+            limparControles();
+            carregarGrid("");
         }
     }
 }
