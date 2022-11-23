@@ -22,20 +22,12 @@ namespace _211089.Views
         
         void limpaControles()
         {
-            txtID.Clear();
-            txtNome.Clear();
-            cboCidades.SelectedIndex = 
+           
         }
 
         private void FrmClientes_Load(object sender, EventArgs e)
         {
-            ci = new FrmCidades();
-            cboCidades.DataSource = ciCidades.Consultar();
-            cboCidades.DisplayMember = "nome";
-            cboCidades.ValueMember = "id";
-
-            limpaControles();
-            carregarGrid("");
+            
         }
     }
 }
