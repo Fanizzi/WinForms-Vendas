@@ -60,6 +60,8 @@ namespace _211089
                 // Executa a Query no MySQL (Raio do Workbench)
                 Comando.ExecuteNonQuery();
 
+
+                // Criando tabela Cidades
                 Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Cidades " +
                                            "(id integer auto_increment primary key, " +
                                            "nome varchar(40), " +
@@ -67,15 +69,30 @@ namespace _211089
 
                 Comando.ExecuteNonQuery();
 
+                // Criando tabela Marcas
                 Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Marcas " +
                                            "(id integer auto_increment primary key, " +
                                            "nome varchar(20))", Conexao);
 
                 Comando.ExecuteNonQuery();
 
+                // Criando tabela Categorias
                 Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Categorias " +
                                            "(id integer auto_increment primary key, " +
                                            "nome varchar(20))", Conexao);
+
+                Comando.ExecuteNonQuery();
+
+                // Criando tabela Clientes
+                Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Clientes " +
+                                           "(id integer auto_increment primary key, " +
+                                           "nome char (40), " +
+                                           "idCidade integer," +
+                                           "dataNasc date," +
+                                           "renda decimal (10,2), " +
+                                           "cpf char(14), " +
+                                           "foto varchar(100), " +
+                                           "venda boolean)", Conexao);
 
                 Comando.ExecuteNonQuery();
 
