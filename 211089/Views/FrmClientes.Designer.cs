@@ -40,23 +40,24 @@
             this.label4 = new System.Windows.Forms.Label();
             this.mskCPF = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDataNasc = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.pctFoto = new System.Windows.Forms.PictureBox();
+            this.picFoto = new System.Windows.Forms.PictureBox();
             this.txtRenda = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.BtnExcluir = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtPesquisa = new System.Windows.Forms.TextBox();
-            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.btnConsultar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pctFoto)).BeginInit();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ofdArquivo = new System.Windows.Forms.OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.picFoto)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
@@ -113,6 +114,7 @@
             this.cboCidades.Name = "cboCidades";
             this.cboCidades.Size = new System.Drawing.Size(438, 21);
             this.cboCidades.TabIndex = 5;
+            this.cboCidades.SelectedIndexChanged += new System.EventHandler(this.cboCidades_SelectedIndexChanged);
             // 
             // txtUF
             // 
@@ -159,13 +161,13 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "CPF:";
             // 
-            // dateTimePicker1
+            // dtpDataNasc
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(360, 228);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 11;
+            this.dtpDataNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataNasc.Location = new System.Drawing.Point(360, 228);
+            this.dtpDataNasc.Name = "dtpDataNasc";
+            this.dtpDataNasc.Size = new System.Drawing.Size(200, 20);
+            this.dtpDataNasc.TabIndex = 11;
             // 
             // label6
             // 
@@ -177,13 +179,15 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Data de Nascimento:";
             // 
-            // pctFoto
+            // picFoto
             // 
-            this.pctFoto.Location = new System.Drawing.Point(653, 12);
-            this.pctFoto.Name = "pctFoto";
-            this.pctFoto.Size = new System.Drawing.Size(215, 201);
-            this.pctFoto.TabIndex = 13;
-            this.pctFoto.TabStop = false;
+            this.picFoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picFoto.Location = new System.Drawing.Point(653, 12);
+            this.picFoto.Name = "picFoto";
+            this.picFoto.Size = new System.Drawing.Size(215, 201);
+            this.picFoto.TabIndex = 13;
+            this.picFoto.TabStop = false;
+            this.picFoto.Click += new System.EventHandler(this.picFoto_Click);
             // 
             // txtRenda
             // 
@@ -212,6 +216,7 @@
             this.btnIncluir.TabIndex = 16;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.UseVisualStyleBackColor = true;
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // btnAlterar
             // 
@@ -223,6 +228,7 @@
             this.btnAlterar.TabIndex = 17;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnCancelar
             // 
@@ -234,17 +240,19 @@
             this.btnCancelar.TabIndex = 18;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // BtnExcluir
+            // btnExcluir
             // 
-            this.BtnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("BtnExcluir.Image")));
-            this.BtnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnExcluir.Location = new System.Drawing.Point(525, 272);
-            this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(129, 65);
-            this.BtnExcluir.TabIndex = 19;
-            this.BtnExcluir.Text = "Excluir";
-            this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
+            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcluir.Location = new System.Drawing.Point(525, 272);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(129, 65);
+            this.btnExcluir.TabIndex = 19;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnFechar
             // 
@@ -256,6 +264,7 @@
             this.btnFechar.TabIndex = 20;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // textBox1
             // 
@@ -276,6 +285,36 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultar.Image")));
+            this.btnConsultar.Location = new System.Drawing.Point(727, 15);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(95, 52);
+            this.btnConsultar.TabIndex = 23;
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
+            // dgvClientes
+            // 
+            this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
+            this.dgvClientes.AllowUserToOrderColumns = true;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Location = new System.Drawing.Point(20, 73);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.Size = new System.Drawing.Size(802, 143);
+            this.dgvClientes.TabIndex = 24;
+            this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.Location = new System.Drawing.Point(20, 38);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(691, 20);
+            this.txtPesquisa.TabIndex = 23;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -286,29 +325,9 @@
             this.label8.TabIndex = 23;
             this.label8.Text = "Digite o nome do Cliente para Pesquisa:";
             // 
-            // txtPesquisa
+            // ofdArquivo
             // 
-            this.txtPesquisa.Location = new System.Drawing.Point(20, 38);
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(691, 20);
-            this.txtPesquisa.TabIndex = 23;
-            // 
-            // dgvClientes
-            // 
-            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(20, 73);
-            this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(802, 143);
-            this.dgvClientes.TabIndex = 24;
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultar.Image")));
-            this.btnConsultar.Location = new System.Drawing.Point(727, 15);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(95, 52);
-            this.btnConsultar.TabIndex = 23;
-            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.ofdArquivo.FileName = "ofdArquivo";
             // 
             // FrmClientes
             // 
@@ -318,15 +337,15 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnFechar);
-            this.Controls.Add(this.BtnExcluir);
+            this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtRenda);
-            this.Controls.Add(this.pctFoto);
+            this.Controls.Add(this.picFoto);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpDataNasc);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.mskCPF);
             this.Controls.Add(this.label4);
@@ -341,7 +360,7 @@
             this.Name = "FrmClientes";
             this.Text = "FrmClientes";
             this.Load += new System.EventHandler(this.FrmClientes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pctFoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFoto)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
@@ -363,15 +382,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox mskCPF;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpDataNasc;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pctFoto;
+        private System.Windows.Forms.PictureBox picFoto;
         private System.Windows.Forms.TextBox txtRenda;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnIncluir;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button BtnExcluir;
+        private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -379,5 +398,6 @@
         private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.OpenFileDialog ofdArquivo;
     }
 }

@@ -40,5 +40,11 @@ namespace _211089
             FrmCidades form = new FrmCidades();
             form.Show();
         }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmClientes form = new FrmClientes();
+            form.Show();
+        }
     }
 }

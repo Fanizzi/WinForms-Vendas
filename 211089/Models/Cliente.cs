@@ -56,6 +56,7 @@ namespace _211089.Models
                 Banco.Comando.Parameters.AddWithValue("@cpf", cpf);
                 Banco.Comando.Parameters.AddWithValue("@foto", foto);
                 Banco.Comando.Parameters.AddWithValue("@venda", venda);
+                Banco.Comando.Parameters.AddWithValue("@id", id);
                 Banco.Comando.ExecuteNonQuery();
                 Banco.Conexao.Close();
             }
@@ -70,8 +71,9 @@ namespace _211089.Models
             try
             {
                 Banco.Conexao.Open();
-                Banco.Comando = new MySqlCommand("DELETE FROM clientes id = @id", Banco.Conexao);
+                Banco.Comando = new MySqlCommand("DELETE FROM clientes where id = @id", Banco.Conexao);
                 Banco.Comando.Parameters.AddWithValue("@id", id);
+                Banco.Comando.ExecuteNonQuery();
                 Banco.Conexao.Close();
             }
             catch (Exception e)
@@ -85,9 +87,9 @@ namespace _211089.Models
             try
             {
                 Banco.Comando = new MySqlCommand("SELECT cl.*, ci.nome cidade, " +
-                "ci.uf FROM Clientes cl INNER JOIN Cidade ci ON (ci.id = cl.idCidade) " +
-                "WHERE cl.nome LIKE ?Nome ORDER BY cl.nome", Banco.Conexao);
-                Banco.Comando.Parameters.AddWithValue(nome, nome + "%");
+                "ci.uf FROM Clientes cl INNER JOIN Cidades ci ON (ci.id = cl.idCidade) " +
+                "WHERE cl.nome LIKE @Nome ORDER BY cl.nome", Banco.Conexao);
+                Banco.Comando.Parameters.AddWithValue("@nome", nome + "%");
                 Banco.Adaptador = new MySqlDataAdapter(Banco.Comando);
                 Banco.datTabela = new DataTable();
                 Banco.Adaptador.Fill(Banco.datTabela);

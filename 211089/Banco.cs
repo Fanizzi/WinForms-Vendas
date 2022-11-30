@@ -25,7 +25,7 @@ namespace _211089
             try
             {
                 // Estabelece os parâmetros para a conexão com o banco
-                Conexao = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=minhasenha123");
+                Conexao = new MySqlConnection("server=localhost;port=3307;uid=root;pwd=etecjau");
 
                 // Abre a conexão com o banco de dados
                 Conexao.Open();
@@ -62,7 +62,7 @@ namespace _211089
 
 
                 // Criando tabela Cidades
-                Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Cidades " +
+                Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Cidade " +
                                            "(id integer auto_increment primary key, " +
                                            "nome varchar(40), " +
                                            "uf char(02))", Conexao);

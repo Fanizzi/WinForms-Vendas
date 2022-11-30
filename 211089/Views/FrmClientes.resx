@@ -148,7 +148,7 @@
         KK0K3uFiDWZk01HKAfL/+Y3thuRvAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="BtnExcluir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnExcluir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAJRJREFUWEft
         kDsKgDAQRFNaCHpNESy8k4WCx/IcuoYEUqya/RBU9sErtpjJEGd8lf3CImAPpxZhQZzBf4B9q6aPYCFN
@@ -177,4 +177,7 @@
         EPR5PRD+AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="ofdArquivo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
