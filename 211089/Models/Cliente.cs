@@ -22,6 +22,7 @@ namespace _211089.Models
             try
             {
                 Banco.Conexao.Open();
+
                 Banco.Comando = new MySqlCommand
                     ("INSERT INTO clientes (nome, idCidade, dataNasc, renda, cpf, foto, venda) " +
                     "VALUES (@nome, @idCidade, @dataNasc, @renda, @cpf, @foto, @venda)", Banco.Conexao);
@@ -32,7 +33,9 @@ namespace _211089.Models
                 Banco.Comando.Parameters.AddWithValue("@cpf", cpf);
                 Banco.Comando.Parameters.AddWithValue("@foto", foto);
                 Banco.Comando.Parameters.AddWithValue("@venda", venda);
+
                 Banco.Comando.ExecuteNonQuery();
+
                 Banco.Conexao.Close();
             }
             catch (Exception e)
@@ -46,6 +49,7 @@ namespace _211089.Models
             try
             {
                 Banco.Conexao.Open();
+
                 Banco.Comando = new MySqlCommand
                 ("UPDATE clientes SET nome = @nome, idCidade = @idCidade, dataNasc = @dataNasc, " +
                 "renda = @renda, cpf = @cpf, foto = @foto, venda = @venda WHERE id = @id", Banco.Conexao);
@@ -57,7 +61,9 @@ namespace _211089.Models
                 Banco.Comando.Parameters.AddWithValue("@foto", foto);
                 Banco.Comando.Parameters.AddWithValue("@venda", venda);
                 Banco.Comando.Parameters.AddWithValue("@id", id);
+
                 Banco.Comando.ExecuteNonQuery();
+
                 Banco.Conexao.Close();
             }
             catch (Exception e)
@@ -71,9 +77,11 @@ namespace _211089.Models
             try
             {
                 Banco.Conexao.Open();
+
                 Banco.Comando = new MySqlCommand("DELETE FROM clientes where id = @id", Banco.Conexao);
                 Banco.Comando.Parameters.AddWithValue("@id", id);
                 Banco.Comando.ExecuteNonQuery();
+
                 Banco.Conexao.Close();
             }
             catch (Exception e)
